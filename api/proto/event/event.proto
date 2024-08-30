@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package event;
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/tech-and-avinash/go-shared-ms-poc/api/proto/event;eventpb";
+
+service EventService {
+    rpc CreateEvent(CreateEventRequest) returns (CreateEventResponse) {
+        option (google.api.http) = {
+            post: "/v1/events"
+            body: "*"
+        };
+    }
+    rpc GetEvent(GetEventRequest) returns (GetEventResponse) {
+        option (google.api.http) = {
+            get: "/v1/events/{id}"
+        };
+    }
+}
+
+message CreateEventRequest {
+    string name = 1;
+    string location = 2;
+    google.protobuf.Timestamp date = 3;
+}
+
+message CreateEventResponse {
+    string id = 1;
+    string message = 2;
+}
+
+message GetEventRequest {
+    string id = 1;
+}
+
+message GetEventResponse {
+    string id = 1;
+    string name = 2;
+    string location = 3;
+    google.protobuf.Timestamp date = 4;
+}

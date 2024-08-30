@@ -1,0 +1,29 @@
+http:
+  routers:
+    event-service:
+      rule: "Host(`localhost`)"
+      service: event-service
+
+    booking-service:
+      rule: "Host(`localhost`)"
+      service: booking-service
+
+    gateway:
+      rule: "Host(`localhost`)"
+      service: gateway
+
+  services:
+    event-service:
+      loadBalancer:
+        servers:
+          - url: "http://event-service:50051"
+
+    booking-service:
+      loadBalancer:
+        servers:
+          - url: "http://booking-service:50052"
+
+    gateway:
+      loadBalancer:
+        servers:
+          - url: "http://gateway-service:8080"
