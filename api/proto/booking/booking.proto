@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package booking;
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/tech-and-avinash/go-shared-ms-poc/api/proto/booking;bookingpb";
+
+service BookingService {
+    rpc CreateBooking(CreateBookingRequest) returns (CreateBookingResponse) {
+        option (google.api.http) = {
+            post: "/v1/bookings"
+            body: "*"
+        };
+    }
+    rpc GetBooking(GetBookingRequest) returns (GetBookingResponse) {
+        option (google.api.http) = {
+            get: "/v1/bookings/{id}"
+        };
+    }
+}
+
+message CreateBookingRequest {
+    string user_id = 1;
+    string event_id = 2;
+}
+
+message CreateBookingResponse {
+    string id = 1;
+    string message = 2;
+}
+
+message GetBookingRequest {
+    string id = 1;
+}
+
+message GetBookingResponse {
+    string id = 1;
+    string user_id = 2;
+    Event event = 3;
+}
+
+message Event {
+    string id = 1;
+    string name = 2;
+    string location = 3;
+    google.protobuf.Timestamp date = 4;
+}
