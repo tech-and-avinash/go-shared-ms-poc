@@ -75,6 +75,11 @@ You can also explore the complete Postman collection used in this project:
    make clean
    ```
 
+## References
+
+- [Source chatGPT](https://chatgpt.com/c/57ce70e8-3ba9-4bbd-9cbb-e4c0a1e0e0fd)
+- [Shared chatGPT](https://chatgpt.com/share/0156f3b6-afa5-43b8-a1b0-729fd4c707f9)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
