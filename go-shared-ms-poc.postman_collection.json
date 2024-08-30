@@ -1,0 +1,352 @@
+{
+	"info": {
+		"_postman_id": "6c71caee-a702-4400-b0bd-6365ce7d3160",
+		"name": "go-shared-ms-poc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10235256",
+		"_collection_link": "https://interstellar-rocket-983045.postman.co/workspace/rb~0ae5c256-39b0-4b2b-a162-c297bde5c51a/collection/10235256-6c71caee-a702-4400-b0bd-6365ce7d3160?action=share&source=collection_link&creator=10235256"
+	},
+	"item": [
+		{
+			"name": "Creating an Event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tech Conference\",\n    \"location\": \"New York\",\n    \"date\": \"2024-09-15T09:00:00Z\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/v1/events"
+			},
+			"response": [
+				{
+					"name": "Creating an Event",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tech Conference\",\n    \"location\": \"New York\",\n    \"date\": \"2024-09-15T09:00:00Z\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/v1/events"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "62"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Grpc-Metadata-Content-Type",
+							"value": "application/grpc"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 30 Aug 2024 21:29:43 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"event_83a0624a\",\n    \"message\": \"Event created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetching an Event",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tech Conference\",\n    \"location\": \"New York\",\n    \"date\": \"2024-09-15T09:00:00Z\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/events/:event_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"events",
+						":event_id"
+					],
+					"variable": [
+						{
+							"key": "event_id",
+							"value": "event_83a0624a"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fetching an Event",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tech Conference\",\n    \"location\": \"New York\",\n    \"date\": \"2024-09-15T09:00:00Z\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/v1/events/:event_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"events",
+								":event_id"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "event_83a0624a"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "100"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Grpc-Metadata-Content-Type",
+							"value": "application/grpc"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 30 Aug 2024 21:32:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"event_83a0624a\",\n    \"name\": \"Tech Conference\",\n    \"location\": \"New York\",\n    \"date\": \"2024-09-15T09:00:00Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Creating a Booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"user_123\",\n    \"event_id\": \"event_83a0624a\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/v1/bookings"
+			},
+			"response": [
+				{
+					"name": "Creating a Booking",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"user_123\",\n    \"event_id\": \"event_83a0624a\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/v1/bookings"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Grpc-Metadata-Content-Type",
+							"value": "application/grpc"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 30 Aug 2024 21:33:36 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"booking_b3dd40b1\",\n    \"message\": \"Booking created successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetching a Booking",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/v1/bookings/:booking_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"bookings",
+						":booking_id"
+					],
+					"variable": [
+						{
+							"key": "booking_id",
+							"value": "booking_b3dd40b1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fetching a Booking",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/v1/bookings/:booking_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"bookings",
+								":booking_id"
+							],
+							"variable": [
+								{
+									"key": "booking_id",
+									"value": "booking_b3dd40b1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "154"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Grpc-Metadata-Content-Type",
+							"value": "application/grpc"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 30 Aug 2024 21:35:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"booking_b3dd40b1\",\n    \"userId\": \"user_123\",\n    \"event\": {\n        \"id\": \"event_83a0624a\",\n        \"name\": \"Tech Conference\",\n        \"location\": \"New York\",\n        \"date\": \"2024-09-15T09:00:00Z\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
